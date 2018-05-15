@@ -1,0 +1,256 @@
+{
+  "Demo": [
+    {
+      "url": "/categorys",
+      "desc": "获取一些category",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "Get categorys successfully.",
+        "data": [{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},
+          {"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},{"catergoryName":"@word(1,6)","categoryValue":"@integer()"},
+          {"catergoryName":"@word(1,6)","categoryValue":"@integer()"}]
+      }
+    },
+    {
+      "url": "/category_detail",
+      "desc": "分类详情",
+      "mock":true,
+      "delay": 1000,
+      "res": {
+        "success":true,
+        "code": "@pick([200, 200])",
+        "message": "There is a 50% chance of failure, pls try again",
+        "data": {
+          "accessNum" : "@pick([10,20,30])",
+          "deviceAccessTotal":37,
+          "accessPercentage":"27%",
+          "openRate":{
+            "num":"@pick(['10%','20%','30%','90%'])",
+            "behavior":"@pick(['up','down'])",
+            "text_intro":"CT设备有效工作时长6小时/CT设备累计开机时间10小时=60%"
+          },
+          "useRate":{
+            "num":"@pick(['10%','20%','30%','90%'])",
+            "behavior":"@pick(['up','down'])",
+            "text_intro":"CT设备有效工作时长6小时/CT设备累计开机时间10小时=60%"
+
+          },
+          "errorRate":{
+            "num":"@pick(['10%','20%','30%','90%'])",
+            "behavior":"@pick(['up','down'])",
+            "text_intro":"CT设备有效工作时长6小时/CT设备累计开机时间10小时=60%"
+
+          }
+
+        }
+      }
+    },
+    {
+      "url": "/device_status",
+      "desc": "获取设备使用状态",
+      "delay": 1000,
+
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "Get data success",
+        "data": {
+          "fontIcon":"&#xe736",
+          "maxNormalFrequency":"95",
+          "devices|1-8":[{
+            "department":"@pick(['呼吸科','消化科','内科','外科','胸内科','骨科'])",
+            "deviceCount":"@integer(1,100)",
+            "deviceUseDetail|1-6":[{
+              "deviceName":"@pick(['GE Brivo','SONY','Panasonic','Siemens','Philips'])",
+              "useCount":"@integer(1,20)",
+              "status":"@pick(['busy','normal','offline'])",
+              "devId":"@integer(20,50)"
+            }]
+          }]
+        }
+      }
+    },
+    {
+      "url": "/usage_frequency",
+      "desc": "获取设备使用频次",
+      "delay": 1000,
+
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "Get data success",
+        "data": {
+          "usageToday":"@integer(100,1000)",
+          "usageTotal":"@integer(500,1000)",
+          "usageAverageCountry":"@integer(300,1000)",
+          "frequency|60-80":[{
+            "date":"@date('yyyy-MM-dd')",
+            "value":"@pick([0,50,10,0])"
+          }]
+        }
+      }
+    },
+    {
+      "url": "/top_usage",
+      "desc": "获取TOP3设备使用频次",
+      "delay": 1000,
+
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "Get data success",
+        "data|3": [{
+          "department":"CT(GE BRIVO) 脑外科",
+          "usage":"@integer(20,100)",
+          "averageType":"@pick(['local','country'])",
+          "averageUsage":"@integer(20,100)"
+        }]
+      }
+    },
+    {
+      "url":"/test",
+      "desc": "test",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "test api",
+        "data|3": [{
+          "department":"CT(GE BRIVO) 脑外科",
+          "usage":"@integer(20,100)",
+          "averageType":"@pick(['local','country'])",
+          "averageUsage":"@integer(20,100)",
+          "name|1-5":"哈",
+          "count|+8":9,
+          "boolean1|1":true,
+          "boolean2|2-8":false,
+          "data1|1-2":{
+            "a":1,
+            "b":2
+          },
+          "array|+1":[{"a":1},{"b":2}]
+        }]
+      }
+    },
+    {
+      "url":"/api_test",
+      "desc": "api_test",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "test api",
+        "data|5": [{
+          "boolean":"@boolean(4,7, true)",
+          "natural":"@natural(-5,1)",
+          "integer":"@integer(-5,5)",
+          "float":"@float(-5, 9, 2, 7)",
+          "character":"@character('lower')",
+          "string":"@string('lower',2,7)",
+          "range":"@range(10,20, 2)",
+          "date":"@date('yyyy-MM-dd')",
+          "time":"@time('HH:mm:ss')",
+          "datetime":"@datetime('yyyy-MM-dd HH:mm:ss')",
+          "now":"@now('second', 'yyyy-MM-dd HH:mm:ss')",
+          "image":"@image('300x250', '#000000', '#FFFFFF', 'png','hhhh')",
+          "color":"@color()",
+          "hex":"@hex()",
+          "rgb":"@rgb()",
+          "rgba":"@rgba()",
+          "hsl":"@hsl()",
+          "paragraph":"@paragraph(1,5)",
+          "cparagraph":"@cparagraph(5)",
+          "sentence":"@sentence(2,7)",
+          "csentence":"@csentence(10)",
+          "word":"@word(3,7)",
+          "cword":"@cword('就会更加简简单单死我',3,5)",
+          "title":"@title(9,12)",
+          "ctitle":"@ctitle(4,24)",
+          "first":"@first()",
+          "last":"@last()",
+          "name":"@name(true)",
+          "cfirst":"@cfirst()",
+          "clast":"@clast()",
+          "cname":"@cname()",
+          "url":"@url()",
+          "protocol":"@protocol()",
+          "domain":"@domain()",
+          "tld":"@tld()",
+          "email":"@email('qq.com')",
+          "ip":"@ip()",
+          "region":"@region()",
+          "province":"@province()",
+          "city":"@city(true)",
+          "county":"@county(true)",
+          "zip":"@zip()",
+          "capitalize":"@capitalize('hello')",
+          "upper":"@upper('hello')",
+          "lower":"@lower('HELLO')",
+          "pick":"@pick(['a','b','c','d','e'])",
+          "shuffle":"@shuffle(['a','b','c','d','e'])",
+          "guid":"@guid()",
+          "id":"@id()",
+          "increment":"@increment(55)"
+        }]
+      }
+    },
+    {
+      "url":"/hospital_list",
+      "desc": "大屏医院列表",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "大屏医院列表",
+        "data|3": [{
+          "id":"@integer(20,100)",
+          "nameChinese":"四川省人民医院",
+          "nameEnglish":"@word(7,9)"
+        }]
+      }
+    },
+    {
+      "url":"/template_list",
+      "desc": "大屏模版列表",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "大屏模版列表",
+        "data|3": [{
+          "id":"@integer(1,2)",
+          "nameChinese":"@word(3,7)",
+          "nameEnglish":"@word(7,9)"
+        }]
+      }
+    },
+    {
+      "url":"/contrast",
+      "desc": "对照表",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "大屏对照表",
+        "data": {
+          "areaAModule": "DEVICE_PANDECT_C",
+          "areaBModule": "DEVICE_SERVICE_A",
+          "areaDModule": "EQUIPMENT_UPDATE_INFO",
+          "areaEModule": "EQUIPMENT_TIMEOUT_INFO",
+          "areaCModule": "VALUE_DEVICE_A",
+          "areaHModule": "MONTH_CHECK_COUNT",
+          "areaIModule": "MONTH_REPAIR_COUNT",
+          "areaFModule": "TECHNICAL_DEVICE_A",
+          "areaGModule": "LIFE_DEVICE_B",
+          "areaJModule": "TECHNICAL_REPAIR_A"
+        }
+      }
+    },
+    {
+      "url": "/",
+      "desc": "Index",
+      "mock":true,
+      "res": {
+        "success":true,
+        "message": "Hi, this is mock server.",
+        "data": ""
+      }
+    }
+  ]
+}
